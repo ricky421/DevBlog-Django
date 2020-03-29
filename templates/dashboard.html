@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+	<center><h1>User's Articles</h1></center>
+	<a href = "{% url 'create' %}">Post a new article!</a>
+	<ul>
+		{% for thing in yo_articles %}
+		<div class = "article">
+			<li>
+				<h3><a href="{{thing.slug}}">{{thing.title}}</a></h3>
+				<p>{{thing.snippet}}</p>
+				<p>{{thing.date}}</p>	
+			</li>
+		</div>
+		<a href = "{{thing.slug}}/edit">Edit Article</a>
+		{% endfor %}
+	</ul>
+</body>
+</html>
